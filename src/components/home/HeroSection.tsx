@@ -1,11 +1,90 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { FloatingShapes } from "@/components/ui/FloatingShapes";
-import { ArrowRight, Zap, DollarSign, Bot } from "lucide-react";
+import { ArrowRight, Zap, DollarSign, Bot, Euro, PoundSterling, IndianRupee } from "lucide-react";
+
+const currencyIcons = [DollarSign, Euro, PoundSterling, IndianRupee];
+
+function SpeedIcon({ isHovered }: { isHovered: boolean }) {
+  return (
+    <motion.div
+      animate={isHovered ? { x: [0, 8, 0], scale: [1, 1.2, 1] } : {}}
+      transition={{ duration: 0.3, repeat: isHovered ? Infinity : 0, repeatDelay: 0.1 }}
+    >
+      <Zap className="h-6 w-6 text-cyan" />
+    </motion.div>
+  );
+}
+
+function CurrencyIcon({ isHovered }: { isHovered: boolean }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!isHovered) {
+      setCurrentIndex(0);
+      return;
+    }
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % currencyIcons.length);
+    }, 400);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  const Icon = currencyIcons[currentIndex];
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={currentIndex}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 10 }}
+        transition={{ duration: 0.15 }}
+      >
+        <Icon className="h-6 w-6 text-accent" />
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+function AIIcon({ isHovered }: { isHovered: boolean }) {
+  return (
+    <motion.div
+      animate={isHovered ? { opacity: [1, 0.3, 1] } : {}}
+      transition={{ duration: 0.5, repeat: isHovered ? Infinity : 0 }}
+    >
+      <Bot className="h-6 w-6 text-primary" />
+    </motion.div>
+  );
+}
 
 export function HeroSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const features = [
+    { 
+      IconComponent: SpeedIcon, 
+      title: "Speed", 
+      desc: "7-21 day delivery", 
+      color: "cyan" 
+    },
+    { 
+      IconComponent: CurrencyIcon, 
+      title: "Affordability", 
+      desc: "From ₦79,999/mo ($53/mo)", 
+      color: "accent" 
+    },
+    { 
+      IconComponent: AIIcon, 
+      title: "AI-Powered", 
+      desc: "Latest technology", 
+      color: "primary" 
+    },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-cyan/5 min-h-[90vh] flex items-center">
       {/* Animated background shapes */}
@@ -163,19 +242,15 @@ export function HeroSection() {
 
           {/* Feature highlights */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
-            {[
-              { icon: Zap, title: "Speed", desc: "7-21 day delivery", color: "cyan" },
-              { icon: DollarSign, title: "Affordability", desc: "From ₦79,999/mo ($53/mo)", color: "accent" },
-              { icon: Bot, title: "AI-Powered", desc: "Latest technology", color: "primary" },
-            ].map((feature, index) => {
-              const Icon = feature.icon;
-              const bgColor = feature.color === "cyan" ? "bg-cyan/10" : feature.color === "accent" ? "bg-accent/10" : "bg-primary/10";
-              const iconColor = feature.color === "cyan" ? "text-cyan" : feature.color === "accent" ? "text-accent" : "text-primary";
+            {features.map((feature, index) => {
+              const { IconComponent, title, desc, color } = feature;
+              const bgColor = color === "cyan" ? "bg-cyan/10" : color === "accent" ? "bg-accent/10" : "bg-primary/10";
+              const isHovered = hoveredIndex === index;
               
               return (
                 <motion.div 
                   key={index}
-                  className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border backdrop-blur-sm"
+                  className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border backdrop-blur-sm cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 + index * 0.15 }}
@@ -183,17 +258,15 @@ export function HeroSection() {
                     y: -4,
                     boxShadow: "0 15px 30px -10px rgba(0,0,0,0.1)",
                   }}
+                  onHoverStart={() => setHoveredIndex(index)}
+                  onHoverEnd={() => setHoveredIndex(null)}
                 >
-                  <motion.div 
-                    className={`p-2 ${bgColor} rounded-lg`}
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <Icon className={`h-6 w-6 ${iconColor}`} />
-                  </motion.div>
+                  <div className={`p-2 ${bgColor} rounded-lg`}>
+                    <IconComponent isHovered={isHovered} />
+                  </div>
                   <div>
-                    <p className="font-semibold text-foreground">{feature.title}</p>
-                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
+                    <p className="font-semibold text-foreground">{title}</p>
+                    <p className="text-sm text-muted-foreground">{desc}</p>
                   </div>
                 </motion.div>
               );

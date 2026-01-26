@@ -63,7 +63,7 @@ export function Header() {
                 AI Now Now
               </span>
               <span className="text-[10px] text-muted-foreground -mt-1">
-                Your Business, On Time
+                by Wiseland Global
               </span>
             </Link>
 
