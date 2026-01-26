@@ -159,7 +159,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              We are an AI Agency that builds websites, automates customer service, and creates
+              We are AI Experts/Consultants that builds websites, automates customer service, and creates
               content — while you focus on what you do best
             </motion.p>
 

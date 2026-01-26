@@ -11,7 +11,7 @@ const steps = [
     number: "2",
     icon: Zap,
     title: "AI Creates First Draft",
-    description: "Our AI builds initial version in 24-48 hours",
+    description: "Our AI system builds initial version in 24-48 hours",
   },
   {
     number: "3",
