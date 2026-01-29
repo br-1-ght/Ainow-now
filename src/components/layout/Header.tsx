@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import logo from "/ainownow-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -58,11 +59,13 @@ export function Header() {
         <div className="container-custom">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="flex flex-col">
-              <span className="text-xl font-display font-bold text-primary">
-                AI Now Now
-              </span>
-              <span className="text-[10px] text-muted-foreground -mt-1">
+            <Link to="/" className="flex flex-col items-center">
+              <img 
+                src={logo} 
+                alt="AI Now Now" 
+                className="h-10 w-auto"
+              />
+              <span className="text-[10px] font-semibold text-muted-foreground -mt-1">
                 by Wiseland Global
               </span>
             </Link>
