@@ -46,7 +46,7 @@ export function Header() {
         <div className="container-custom flex items-center justify-between text-sm">
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4" />
-            <span>+234 703 899 1962</span>
+            <span>+234 904 608 9019</span>
           </div>
           <span className="hidden sm:block text-primary-foreground/80">
             Serving businesses across Nigeria, Ghana, Kenya & South Africa
