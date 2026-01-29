@@ -24,8 +24,8 @@ const packages = [
     name: "Office Assistant",
     badge: "Perfect for: Growing Businesses (10-50 employees)",
     popular: true,
-    setup: { naira: 2780999, usd: 1999 },
-    monthly: { naira: 99999, usd: 72 },
+    setup: { naira: 1649999, usd: 1099 },
+    monthly: { naira: 299999, usd: 199 },
     delivery: "2 weeks setup",
     features: [
       "24/7/30 days call answering",
@@ -40,8 +40,8 @@ const packages = [
   {
     name: "Full Time Assitant",
     badge: "Perfect for: Established Companies (50+ employees)",
-    setup: { naira: 13922300, usd: 10000 },
-    monthly: { naira: 1390837, usd: 999 },
+    setup: { naira: 14999999, usd: 9999 },
+    monthly: { naira: 1498499, usd: 999 },
     delivery: "4 weeks setup",
     features: [
       "24/7/180 days call answering",
