@@ -138,7 +138,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
-          <p>© 2025 AI Now Now. All rights reserved.</p>
+          <p>© 2026 AI Now Now. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Proudly African 🌍 | By Wiseland Global
           </p>
