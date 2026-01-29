@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -28,19 +29,43 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    
-    setIsSubmitting(false);
-    setFormData({
-      name: "", email: "", phone: "", country: "", businessType: "", 
-      currency: "", message: "", interests: [], contactMethod: ""
-    });
+    try {
+      await emailjs.send(
+        "service_65740p6",
+        "template_l786yb6",
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          country: formData.country || "Not specified",
+          businessType: formData.businessType || "Not specified",
+          currency: formData.currency || "Not specified",
+          message: formData.message || "No message provided",
+          interests: formData.interests.length > 0 ? formData.interests.join(", ") : "None selected",
+          contactMethod: formData.contactMethod || "Not specified",
+        },
+        "Jqm3VAMKvkPcrtxOf"
+      );
+
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      
+      setFormData({
+        name: "", email: "", phone: "", country: "", businessType: "", 
+        currency: "", message: "", interests: [], contactMethod: ""
+      });
+    } catch (error: unknown) {
+      console.error("Error sending message:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly via WhatsApp.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleInterest = (interest: string) => {
@@ -162,8 +187,8 @@ const Contact = () => {
               <div className="p-6 bg-card rounded-xl border border-border">
                 <Phone className="h-6 w-6 text-cyan mb-3" />
                 <h3 className="font-semibold mb-1">Call Us</h3>
-                <p className="text-muted-foreground text-sm">+234 703 899 1962</p>
-                <p className="text-xs text-muted-foreground">Sun-Sun, 9am-6pm WAT</p>
+                <p className="text-muted-foreground text-sm">+234 904 608 9019</p>
+                <p className="text-xs text-muted-foreground">Sun-Sun, 24/7 WAT</p>
               </div>
               <div className="p-6 bg-card rounded-xl border border-border">
                 <Mail className="h-6 w-6 text-cyan mb-3" />
