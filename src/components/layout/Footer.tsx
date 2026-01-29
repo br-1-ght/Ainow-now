@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Youtube, Instagram } from "lucide-react";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -60,21 +60,14 @@ export function Footer() {
               <a
                 href="#"
                 className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Twitter"
               >
-                <Twitter className="h-4 w-4" />
+                <Youtube className="h-4 w-4" />
               </a>
               <a
-                href="#"
+                href="https://youtu.be/95pyKy6dnIE?si=TM6m9zBVGLZbaonE"
                 className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Instagram"
+                aria-label="Youtube"
               >
                 <Instagram className="h-4 w-4" />
               </a>
