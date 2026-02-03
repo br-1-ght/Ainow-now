@@ -1,52 +1,85 @@
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { PriceDisplay } from "@/components/ui/PriceDisplay";
-import { Check, ArrowRight, Video } from "lucide-react";
+import { Check, ArrowRight, Lightbulb, Clock } from "lucide-react";
 
 const packages = [
   {
-    name: "Social Starter",
-    badge: "Perfect for: Solopreneurs & Small Businesses",
-    monthly: { naira: 79999, usd: 53 },
+    name: "Idea Validation",
+    tier: "STARTUP",
+    badge: "Have an idea, nothing built yet",
+    setup: { naira: 1499999, usd: 1000 },
+    monthly: { naira: 299999, usd: 200 },
+    delivery: "5-7 days",
+    goal: "Turn raw idea into a testable concept.",
     features: [
-      "12 posts per month (3x per week)",
-      "Platforms: Instagram + Facebook",
-      "Images with captions, carousels, quotes",
-      "AI-written copy based on your business",
-      "Approve via WhatsApp before posting",
-      "Auto-posting on your schedule",
-      "Monthly performance report",
+      "Strategy discovery session",
+      "Problem-solution definition",
+      "Target customer profile",
+      "Competitive landscape",
+      "Monetization model",
+      "MVP feature scope",
+      "Validation roadmap",
     ],
+    deliverables: [
+      "Validation document",
+      "MVP feature list",
+      "Business deck (5-7 slides)",
+    ],
+    positioning: "Know if your idea is worth building.",
   },
   {
-    name: "Content Machine",
-    badge: "Perfect for: Growing Businesses",
+    name: "MVP Launch",
+    tier: "GROWTH",
+    badge: "Ready to launch",
     popular: true,
-    monthly: { naira: 179999, usd: 119 },
+    setup: { naira: 5249999, usd: 3500 },
+    monthly: { naira: 1049999, usd: 700 },
+    delivery: "2-4 weeks",
+    goal: "Turn idea into a real product.",
     features: [
-      "20 posts per month (5x per week)",
-      "Platforms: Instagram + Facebook",
-      "Everything in Social Starter, plus:",
-      "4 short-form videos (15-30 seconds)",
-      "2 blog posts (500-800 words)",
-      "Email newsletter template",
-      "Bi-weekly strategy calls",
+      "Everything in Startup, plus:",
+      "Brand name & positioning",
+      "Landing page / website",
+      "Core workflows & CRM",
+      "Payment integration",
+      "Lead capture & automation",
+      "Pitch deck",
     ],
+    deliverables: [
+      "Live website & MVP",
+      "CRM system",
+      "Pitch deck",
+      "Admin access",
+    ],
+    positioning: "Launch your business fast.",
   },
   {
-    name: "Brand Dominator",
-    badge: "Perfect for: Established Brands",
-    monthly: { naira: 399999, usd: 266 },
+    name: "Venture Build",
+    tier: "SCALE",
+    badge: "Serious founders & investors",
+    setup: { naira: 14999999, usd: 10000 },
+    monthly: { naira: 2999999, usd: 2000 },
+    delivery: "Ongoing",
+    goal: "Co-build and scale together.",
     features: [
-      "40 posts per month (daily + stories)",
-      "Platforms: Instagram + Facebook",
-      "8 professional videos per month",
-      "4 long-form blog posts (1,500+ words)",
-      "2 email campaigns per month",
-      "Community management",
-      "Weekly strategy sessions",
+      "Everything in Growth, plus:",
+      "Deep market research",
+      "Financial model",
+      "Growth strategy",
+      "Custom AI agents",
+      "Advanced analytics",
+      "Infrastructure planning",
     ],
+    deliverables: [
+      "Full venture partnership",
+      "Scalable infrastructure",
+      "Growth roadmap",
+      "Investor-ready materials",
+    ],
+    positioning: "Co-build and scale together.",
   },
 ];
 
@@ -55,66 +88,143 @@ const ContentAutomation = () => {
     <Layout>
       {/* Hero */}
       <section className="section-padding bg-gradient-to-br from-accent/5 via-background to-cyan/5">
-        <div className="container-custom text-center">
-          <div className="inline-flex p-4 bg-accent/10 rounded-full mb-6">
-            <Video className="h-10 w-10 text-accent" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Your Social Media. On Autopilot.
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            AI creates engaging content + videos for your business and posts automatically. You just approve and watch your followers grow.
-          </p>
+        <div className="container-custom text-center max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex p-4 bg-accent/10 rounded-full mb-6">
+              <Lightbulb className="h-10 w-10 text-accent" />
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-4">
+              From Idea to Execution
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              We take your idea from concept to a working business — fast, structured, and automated.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Packages */}
       <section className="section-padding">
-        <div className="container-custom">
-          <h2 className="text-3xl font-display font-bold text-center mb-12">Choose Your Content Package</h2>
+        <div className="container-custom max-w-6xl mx-auto">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-display font-bold text-center mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Choose Your Package
+          </motion.h2>
+          <p className="text-muted-foreground text-center mb-12 max-w-xl mx-auto">
+            Select the tier that matches your stage and ambition.
+          </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
-              <div key={index} className={`flex flex-col p-6 bg-card rounded-xl border-2 ${pkg.popular ? 'border-accent' : 'border-border'} hover-lift`}>
-                {pkg.popular && <span className="badge-popular self-start mb-3">MOST POPULAR</span>}
-                <span className="text-xs text-muted-foreground mb-2">{pkg.badge}</span>
-                <h3 className="text-xl font-bold text-foreground mb-4">{pkg.name}</h3>
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className={`relative flex flex-col p-8 bg-card rounded-2xl border-2 transition-shadow duration-300 ${
+                  pkg.popular 
+                    ? 'border-accent shadow-lg shadow-accent/10' 
+                    : 'border-border hover:shadow-lg hover:shadow-primary/5'
+                }`}
+              >
+                {pkg.popular && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-accent-foreground text-xs font-bold rounded-full">
+                    MOST POPULAR
+                  </span>
+                )}
                 
-                <PriceDisplay naira={pkg.monthly.naira} usd={pkg.monthly.usd} period="/month" className="mb-6" />
+                <div className="mb-6">
+                  <span className="text-xs font-bold tracking-wider text-primary">{pkg.tier}</span>
+                  <h3 className="text-2xl font-bold text-foreground mt-1">{pkg.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{pkg.badge}</p>
+                </div>
                 
-                <ul className="space-y-2 mb-6 flex-1">
-                  {pkg.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm">
-                      <Check className="h-4 w-4 text-cyan flex-shrink-0 mt-0.5" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-2 mb-6 pb-6 border-b border-border">
+                  <div>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wide">Setup</span>
+                    <PriceDisplay naira={pkg.setup.naira} usd={pkg.setup.usd} size="md" />
+                  </div>
+                  <div>
+                    <span className="text-xs text-muted-foreground uppercase tracking-wide">Monthly</span>
+                    <PriceDisplay naira={pkg.monthly.naira} usd={pkg.monthly.usd} period="/mo" size="sm" />
+                  </div>
+                </div>
                 
-                <Button asChild className={pkg.popular ? "bg-accent hover:bg-accent/90 btn-glow" : ""}>
+                <div className="flex items-center gap-2 text-cyan mb-4">
+                  <Clock className="h-4 w-4" />
+                  <span className="text-sm font-medium">{pkg.delivery}</span>
+                </div>
+                
+                <p className="text-foreground font-medium mb-6">{pkg.goal}</p>
+                
+                <div className="flex-1 space-y-4 mb-6">
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Includes</p>
+                    <ul className="space-y-2">
+                      {pkg.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <Check className="h-4 w-4 text-cyan flex-shrink-0 mt-0.5" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Deliverables</p>
+                    <ul className="space-y-2">
+                      {pkg.deliverables.map((deliverable, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm">
+                          <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                          <span className="text-foreground font-medium">{deliverable}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                <Button 
+                  asChild 
+                  size="lg"
+                  className={`w-full ${pkg.popular ? "bg-accent hover:bg-accent/90" : ""}`}
+                >
                   <Link to="/contact">Get Started</Link>
                 </Button>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Guarantee */}
-      <section className="py-12 bg-cyan/10">
-        <div className="container-custom text-center">
-          <p className="text-lg font-semibold text-foreground">60-Day Engagement Guarantee</p>
-          <p className="text-muted-foreground">If you don't see measurable improvement in 60 days, we'll refund one month and revise your strategy for free</p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-display font-bold mb-4">Ready to Dominate Social Media?</h2>
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90">
-            <Link to="/contact">Book Strategy Call <ArrowRight className="ml-2 h-5 w-5" /></Link>
-          </Button>
+        <div className="container-custom text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Ready to Build?</h2>
+            <p className="text-lg opacity-90 mb-8">
+              Book a free discovery call to find the right package for you.
+            </p>
+            <Button asChild size="lg" className="bg-accent hover:bg-accent/90">
+              <Link to="/contact">
+                Book Discovery Call
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
     </Layout>

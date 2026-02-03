@@ -24,7 +24,7 @@ const navigation = [
     ],
   },
   { name: "24/7 Voice AI", href: "/voice-ai" },
-  { name: "Content Automation", href: "/content-automation" },
+  { name: "Business Ideation", href: "/content-automation" },
   { name: "How It Works", href: "/how-it-works" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
