@@ -2,131 +2,73 @@ import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PriceDisplay } from "@/components/ui/PriceDisplay";
-import { Check, ArrowRight, Lightbulb } from "lucide-react";
+import { Check, ArrowRight, Phone } from "lucide-react";
 
 const packages = [
   {
-    name: "Idea Validation",
-    tier: "BASIC",
-    badge: "Perfect for: People with an idea, nothing built yet",
+    name: "After-Hours Hero",
+    badge: "Perfect for: Small Businesses (1-10 employees)",
     setup: { naira: 499999, usd: 333 },
-    monthly: null,
-    delivery: "5-7 days",
-    goal: "Turn raw idea into a clear, testable business concept.",
+    monthly: { naira: 149999, usd: 100 },
+    delivery: "1 week setup",
     features: [
-      "1 Strategy Discovery Session",
-      "Problem-solution definition",
-      "Target customer profile",
-      "Value proposition",
-      "Competitive landscape snapshot",
-      "Monetization model",
-      "Feature list (MVP scope)",
-      "Validation roadmap",
+      "After-hours coverage only (6pm-8am + weekends)",
+      "Takes detailed messages",
+      "SMS/email alerts for urgent calls",
+      "Answers 10-15 common FAQs",
+      "Monthly performance report",
+      "Works with existing phone number",
     ],
-    deliverables: [
-      "Idea Validation Document",
-      "MVP Feature List",
-      "Business Summary Deck (5-7 slides)",
-    ],
-    positioning: "Know if your idea is worth building.",
   },
   {
-    name: "MVP Launch",
-    tier: "STANDARD",
-    badge: "Perfect for: People ready to launch",
+    name: "Full-Time Assistant",
+    badge: "Perfect for: Growing Businesses (10-50 employees)",
     popular: true,
     setup: { naira: 999999, usd: 667 },
-    monthly: { naira: 149999, usd: 100 },
-    delivery: "2-4 weeks",
-    goal: "Turn idea into a real product or service.",
-    features: [
-      "Everything in BASIC, plus:",
-      "Brand name & positioning",
-      "Landing page / website",
-      "Core workflows",
-      "CRM setup",
-      "Payment integration",
-      "Lead capture",
-      "Basic automation",
-      "Simple pitch deck",
-    ],
-    deliverables: [
-      "Live website",
-      "Working MVP",
-      "CRM system",
-      "Pitch deck",
-      "Admin access",
-    ],
-    positioning: "Launch your business fast.",
-  },
-  {
-    name: "Business-in-a-Box",
-    tier: "PRO",
-    badge: "Perfect for: Founders who want systems from day one",
-    setup: { naira: 2999999, usd: 2000 },
-    monthly: { naira: 299999, usd: 200 },
-    delivery: "4-6 weeks",
-    goal: "Launch with structure, automation, and scalability.",
-    features: [
-      "Everything in STANDARD, plus:",
-      "Sales pipeline automation",
-      "AI receptionist (web + WhatsApp)",
-      "Marketing automation",
-      "Finance workflow",
-      "Basic dashboard",
-      "SOP documentation",
-      "Staff onboarding system",
-    ],
-    deliverables: [
-      "Fully automated business system",
-      "AI agents",
-      "SOP library",
-      "KPI dashboard",
-    ],
-    positioning: "Launch with enterprise-level systems.",
-  },
-  {
-    name: "Venture Build Partnership",
-    tier: "ELITE",
-    badge: "Perfect for: Serious founders & investors",
-    setup: { naira: 9999999, usd: 6667 },
     monthly: { naira: 499999, usd: 333 },
-    delivery: "Ongoing",
-    goal: "Co-build and scale.",
+    delivery: "2 weeks setup",
     features: [
-      "Everything in PRO, plus:",
-      "Deep market research",
-      "Financial model",
-      "Growth strategy",
-      "Custom AI agents",
-      "Advanced analytics",
-      "Infrastructure planning",
-      "Ongoing optimization",
+      "24/7/365 call answering",
+      "Intelligent department routing",
+      "Appointment booking + calendar sync",
+      "Handles 50+ common questions",
+      "CRM integration (logs every call)",
+      "Call recording + transcripts",
+      "Weekly analytics dashboard",
     ],
-    deliverables: [
-      "Full venture partnership",
-      "Scalable infrastructure",
-      "Growth roadmap",
-      "Investor-ready materials",
+  },
+  {
+    name: "Enterprise Voice OS",
+    badge: "Perfect for: Established Companies (50+ employees)",
+    setup: { naira: 299999999, usd: 200000 },
+    monthly: { naira: 799999, usd: 533 },
+    delivery: "4 weeks setup",
+    features: [
+      "Everything in Full-Time Assistant, plus:",
+      "Multi-location support",
+      "Custom AI personality training",
+      "Advanced call routing logic",
+      "Escalation protocols",
+      "Staff training included",
+      "Dedicated account manager",
     ],
-    positioning: "Co-build and scale together.",
   },
 ];
 
-const ContentAutomation = () => {
+const VoiceAI = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-accent/5 via-background to-cyan/5">
+      <section className="section-padding bg-gradient-to-br from-cyan/5 via-background to-primary/5">
         <div className="container-custom text-center">
-          <div className="inline-flex p-4 bg-accent/10 rounded-full mb-6">
-            <Lightbulb className="h-10 w-10 text-accent" />
+          <div className="inline-flex p-4 bg-cyan/10 rounded-full mb-6">
+            <Phone className="h-10 w-10 text-cyan" />
           </div>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            From Idea to Execution
+            Never Miss Another Call. Ever.
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We take your idea from concept to a working business — fast, structured, and automated.
+            24/7 AI Voice Assistant that answers calls, routes customers, books appointments, and takes messages — even while you sleep
           </p>
         </div>
       </section>
@@ -134,55 +76,34 @@ const ContentAutomation = () => {
       {/* Packages */}
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="text-3xl font-display font-bold text-center mb-12">Choose Your Package</h2>
+          <h2 className="text-3xl font-display font-bold text-center mb-12">Choose Your Voice AI Package</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {packages.map((pkg, index) => (
               <div key={index} className={`flex flex-col p-6 bg-card rounded-xl border-2 ${pkg.popular ? 'border-accent' : 'border-border'} hover-lift`}>
                 {pkg.popular && <span className="badge-popular self-start mb-3">MOST POPULAR</span>}
-                <span className="text-xs font-semibold text-primary mb-1">{pkg.tier}</span>
-                <h3 className="text-xl font-bold text-foreground mb-2">{pkg.name}</h3>
-                <p className="text-xs text-muted-foreground mb-4">{pkg.badge}</p>
+                <span className="text-xs text-muted-foreground mb-2">{pkg.badge}</span>
+                <h3 className="text-xl font-bold text-foreground mb-4">{pkg.name}</h3>
                 
                 <div className="mb-2">
                   <span className="text-sm text-muted-foreground">Setup: </span>
                   <PriceDisplay naira={pkg.setup.naira} usd={pkg.setup.usd} size="sm" />
                 </div>
-                {pkg.monthly && (
-                  <div className="mb-4">
-                    <span className="text-sm text-muted-foreground">Monthly: </span>
-                    <PriceDisplay naira={pkg.monthly.naira} usd={pkg.monthly.usd} period="/month" size="sm" />
-                  </div>
-                )}
-                {!pkg.monthly && <div className="mb-4"><span className="text-sm text-cyan font-medium">One-time payment</span></div>}
+                <div className="mb-4">
+                  <span className="text-sm text-muted-foreground">Monthly: </span>
+                  <PriceDisplay naira={pkg.monthly.naira} usd={pkg.monthly.usd} period="/month" size="sm" />
+                </div>
                 
                 <p className="text-sm text-cyan font-medium mb-4">Delivery: {pkg.delivery}</p>
                 
-                <p className="text-sm text-foreground font-medium mb-3">{pkg.goal}</p>
-                
-                <div className="mb-4 flex-1">
-                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Includes:</p>
-                  <ul className="space-y-1.5 mb-4">
-                    {pkg.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs">
-                        <Check className="h-3 w-3 text-cyan flex-shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <p className="text-xs font-semibold text-muted-foreground uppercase mb-2">Deliverables:</p>
-                  <ul className="space-y-1.5">
-                    {pkg.deliverables.map((deliverable, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs">
-                        <Check className="h-3 w-3 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="font-medium">{deliverable}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <p className="text-sm text-accent font-semibold italic mb-4">"{pkg.positioning}"</p>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {pkg.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <Check className="h-4 w-4 text-cyan flex-shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
                 
                 <Button asChild className={pkg.popular ? "bg-accent hover:bg-accent/90 btn-glow" : ""}>
                   <Link to="/contact">Get Started</Link>
@@ -196,12 +117,9 @@ const ContentAutomation = () => {
       {/* CTA */}
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-custom text-center">
-          <h2 className="text-3xl font-display font-bold mb-4">Ready to Build Your Business?</h2>
-          <p className="text-lg opacity-90 mb-6 max-w-xl mx-auto">
-            Book a free discovery call and let's explore which package is right for your idea.
-          </p>
+          <h2 className="text-3xl font-display font-bold mb-4">Stop Missing Calls Today</h2>
           <Button asChild size="lg" className="bg-accent hover:bg-accent/90">
-            <Link to="/contact">Book Discovery Call <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            <Link to="/contact">Book Free Demo <ArrowRight className="ml-2 h-5 w-5" /></Link>
           </Button>
         </div>
       </section>
@@ -209,4 +127,4 @@ const ContentAutomation = () => {
   );
 };
 
-export default ContentAutomation;
+export default VoiceAI;
